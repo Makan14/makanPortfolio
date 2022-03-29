@@ -18,22 +18,12 @@ class CompetencesController extends AbstractController
     }
 
     /**
-     * @Route("/competences", name="app_competences") 
+     * @Route("/competences/ajout", name="app_competences_ajout")
      */
-    public function index(): Response
+    public function competencesAjout(Request $request): Response 
     {
-        return $this->render('competences/index.html.twig', [
-            'controller_name' => 'CompetencesController',
-        ]);
-    }
-
-    /**
-     * @Route("/competences/edit/{id}", name="app_competences_edit")
-     */
-    public function competencesEdit(Competences $competences, Request $request): Response
-    {
-     
-        $form = $this->createForm(CompetencesType::class, $competences); 
+        $competences = new Competences(); 
+        $form = $this->createForm(CompetencesType::class, $competences);   
         $form->handleRequest($request); 
 
         if ($form->isSubmitted() && $form->isValid()){
@@ -43,8 +33,91 @@ class CompetencesController extends AbstractController
         }
 
 
-        return $this->render('competences/editindex.html.twig', [
-            'formCompetences' => $form, 
+        return $this->render('competences/ajoutCompetences.html.twig', [
+            'formCompetences' => $form->createView(),  
+            
         ]);
     }
+
+    /**
+     * @Route("/competences", name="app_competences") 
+     */
+    public function index(): Response
+    {
+        return $this->render('competences/index.html.twig', [
+            'controller_name' => 'CompetencesController',
+        ]); 
+    }
+
+
+     /**
+     * @Route("/all/competences", name="app_competences_all") 
+     */
+    public function allcompetence(): Response 
+    {
+        
+        $competences = $this->manager->getRepository(Competences::class)->findAll();  
+
+        // dd($competences);
+
+        return $this->render('competences/index.html.twig', [ 
+            'competences' => $competences, 
+        ]);  
+    
+    }
+
+     /**
+     * @Route("/admin/all/competences", name="admin_app_competences_all") 
+     */
+    public function allcompetenceAdmin(): Response 
+    {
+        
+        $allTable = $this->manager->getRepository(Competences::class)->findAll();  
+
+        // dd($competences);
+
+        return $this->render('competences/gestion.html.twig', [ 
+            'competences' => $allTable, 
+        ]);  
+    
+    }
+
+    /**
+     * @Route("/admin/competences/delete/{id}", name="app_admin_competences_delete")
+     */
+    public function competencesDelete(Competences $competences): Response 
+    {
+            $this->manager->remove($competences); 
+            $this->manager->flush(); 
+
+
+        return $this->redirectToRoute('admin_app_competences_all');
+              
+            
+        
+    }
+
+    /**
+     * @Route("/admin/competences/edit/{id}", name="app_admin_competences_edit")
+     */
+    public function competencesEdit(Competences $competences, Request $request): Response 
+    {
+            $formEdit = $this->createForm(CompetencesType::class, $competences);
+            $formEdit->handleRequest($request);
+
+            if ($formEdit->isSubmitted() && $formEdit->isValid()) {
+                $this->manager->persist($competences);  
+                $this->manager->flush(); 
+                return $this->redirectToRoute('admin_app_competences_all');
+            }
+
+            return $this->render('competences/editCompetences.html.twig', [
+                'formCompetences' => $formEdit->createview(), 
+            ]); 
+              
+            
+        
+    }
+
+
 }

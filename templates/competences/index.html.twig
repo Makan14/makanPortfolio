@@ -3,9 +3,69 @@
 {% block title %}Hello CompetencesController!{% endblock %}
 
 {% block body %}
+
+
 <div class="titre">
     <h1>Mes compétences</h1>  
 
 </div> 
+
+<div class="container"> 
+    <div class="row">
+        {% for competences in competences %}
+        <div class="col-md-4 mt-5 d-flex mt-5"> 
+            <div class="card" style="width: 18rem;">
+              <img src="{{competences.logo}}" class="card-img-top" alt="..."> 
+              <div class="card-body">
+                <p class="card-text">{{competences.languages}}</p> 
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+
+        
+        <div class="col-md-4 mt-5">
+            <div class="card" style="width: 18rem;">
+              <img src="../assets/img/css3.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+
+        </div>
+        
+        <div class="col-md-4 mt-5"> 
+            <div class="card" style="width: 18rem;">
+              <img src="../assets/img/js.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+
+        </div>
+        
+        <div class="col-md-4 mt-5">
+            <div class="card" style="width: 18rem;">
+              <img src="../assets/img/sql.png" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+
+        </div>
+        
+        <div class="col-md-4 mt-5">
+            <div class="card" style="width: 18rem;">
+              <img src="../assets/img/php.jpg" class="card-img-top" alt="..."> 
+              <div class="card-body">
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              </div>
+            </div>
+
+        </div>
+
+        
+    </div>
+</div>
 
 {% endblock %}

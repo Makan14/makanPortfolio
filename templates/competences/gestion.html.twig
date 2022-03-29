@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CompetencesController!{% endblock %}
+
+{% block body %}
+
+
+<div class="titre">
+    <h1>Mes compétences</h1>  
+
+</div> 
+
+<div class="container"> 
+    <div class="row">
+
+        <table class="table"> 
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Language</th>
+                <th scope="col">Logo</th>
+                <th scope="col">Modifier</th> 
+                <th scope="col">supprimer</th> 
+              </tr>
+            </thead>
+            <tbody>
+        {% for competences in competences %}
+
+              <tr>
+                <th scope="row">{{competences.id}}</th>
+                <td>{{competences.languages}}</td>
+                <td><img src="{{competences.logo}}" style="width:90px; height:90px;" alt=""></td> 
+                <td><a class="btn btn-success" href="{{path('app_admin_competences_edit',{id: competences.id})}}">Modifier</a></td>
+                <td><a class="btn btn-danger" href="{{path('app_admin_competences_delete',{id: competences.id})}}">Supprimer</a></td> 
+                
+                
+              </tr>
+        {% endfor %} 
+        
+            </tbody>
+        </table>
+</div>
+
+{% endblock %}
