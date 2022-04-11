@@ -2,9 +2,22 @@ body{
     background: rgb(236, 236, 236);
 }
 
+
+/* ****************A PROPOS********************* */
 .titre{
     background: rgb(255, 208, 0);
     padding: 30px;
     text-align: center; 
     
+}
+
+.d-flex{
+    display: flex;
+    margin: 50px 200px; 
+    align-items: center; 
+    
+}
+
+.photo img{
+    height: 700px; 
 }

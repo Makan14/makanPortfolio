@@ -78,7 +78,7 @@ class CompetencesController extends AbstractController
 
         return $this->render('competences/gestion.html.twig', [ 
             'competences' => $allTable, 
-        ]);  
+        ]);   
     
     }
 
@@ -91,9 +91,7 @@ class CompetencesController extends AbstractController
             $this->manager->flush(); 
 
 
-        return $this->redirectToRoute('admin_app_competences_all');
-              
-            
+        return $this->redirectToRoute('admin_app_competences_all');      
         
     }
 

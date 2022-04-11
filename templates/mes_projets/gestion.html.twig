@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GESTION PROJETS{% endblock %}
+
+{% block body %}
+
+
+<div class="titre">
+    <h1>GESTION PROJETS</h1>  
+
+</div> 
+
+<div class="container"> 
+    <div class="row">
+
+        <table class="table"> 
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Images</th>
+                <th scope="col">Modifier</th> 
+                <th scope="col">supprimer</th> 
+              </tr>
+            </thead>
+            <tbody>
+        {% for projets in projets %} 
+
+              <tr>
+                <th scope="row">{{projets.id}}</th>
+                <td>{{projets.nom}}</td> 
+                <td><img src="{{projets.images}}" style="width:90px; height:90px;" alt=""></td> 
+                <td><a class="btn btn-success" href="{{path('app_admin_projets_edit',{id: projets.id})}}">Modifier</a></td>
+                <td><a class="btn btn-danger" href="{{path('app_admin_projets_delete',{id: projets.id})}}">Supprimer</a></td> 
+                
+                
+              </tr>
+        {% endfor %} 
+        
+            </tbody>
+        </table>
+</div>
+
+{% endblock %}
