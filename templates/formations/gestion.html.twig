@@ -1,14 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CompetencesController!{% endblock %}
+{% block title %}formations{% endblock %}
 
 {% block body %}
-
-
-<div class="titre">
-    <h1>Mes compétences</h1>  
-
-</div> 
 
 <div class="container"> 
     <div class="row">
@@ -24,16 +18,17 @@
               </tr>
             </thead>
             <tbody>
-        {% for competences in competences %}
+        {% for formations in formations %}
 
               <tr>
-                <th scope="row">{{competences.id}}</th>
-                <td>{{competences.languages}}</td>
-                <td><img src="{{competences.logo}}" style="width:90px; height:90px;" alt=""></td>
+                <th scope="row">{{formations.id}}</th>
+                <td>{{formations.titre}}</td>
+                <td>{{formations.organisme}}</td> 
+                <td><img src="{{formations.logo}}" style="width:90px; height:90px;" alt=""></td>
                  
                 {%  if is_granted('ROLE_ADMIN') %} 
-                <td><a class="btn btn-success" href="{{path('app_admin_competences_edit',{id: competences.id})}}">Modifier</a></td>
-                <td><a class="btn btn-danger" href="{{path('app_admin_competences_delete',{id: competences.id})}}">Supprimer</a></td> 
+                <td><a class="btn btn-success" href="{{path('app_admin_formations_edit',{id: formations.id})}}">Modifier</a></td>
+                <td><a class="btn btn-danger" href="{{path('app_admin_formations_delete',{id: formations.id})}}">Supprimer</a></td> 
                 {% endif %} 
                 
               </tr>

@@ -30,9 +30,11 @@
                 <th scope="row">{{projets.id}}</th>
                 <td>{{projets.nom}}</td> 
                 <td><img src="{{projets.images}}" style="width:90px; height:90px;" alt=""></td> 
+
+                {%  if is_granted('ROLE_ADMIN') %}  
                 <td><a class="btn btn-success" href="{{path('app_admin_projets_edit',{id: projets.id})}}">Modifier</a></td>
                 <td><a class="btn btn-danger" href="{{path('app_admin_projets_delete',{id: projets.id})}}">Supprimer</a></td> 
-                
+                {% endif %} 
                 
               </tr>
         {% endfor %} 

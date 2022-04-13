@@ -1,8 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FormationsController!{% endblock %}
+{% block title %}Hello CompetencesController!{% endblock %}
 
 {% block body %}
+
+
 <div class="titre">
     <h1>Mes Formations</h1>  
 
@@ -12,16 +14,17 @@
     <div class="row">
         {% for formations in formations %} 
         <div class="col-md-4 mt-5 d-flex mt-5"> 
-            <div class="card" style="width: 18rem;"> 
+            <div class="card" style="width: 18rem;">
+              {# <img src="{{formations.images}}" class="card-img-top" alt="...">  #}
               <div class="card-body">
                 <p class="card-text">{{formations.titres}}</p> 
-                <p class="card-text">{{formations.organisme}}</p> 
+                <p class="card-text">{{formations.organismes}}</p> 
               </div>
             </div>
         </div>
-        {% endfor %}
-
+        {% endfor %} 
         
     </div>
 </div>
+
 {% endblock %}

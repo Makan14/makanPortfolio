@@ -13,9 +13,32 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FormationsController extends AbstractController
 {
     public function __construct(EntityManagerInterface $manager){
-
+        
         $this->manager = $manager; 
     }
+    
+        // *************************AFFICHAGE AJOUT FORMATIONS
+    
+        /**
+         * @Route("/admin/formation/ajout", name="app_formations_ajout")
+         */
+        public function formationAjout(Request $request): Response 
+        {
+            $formations= new Formations();            
+            $form = $this->createForm(FormationType::class, $formations);   
+            $form->handleRequest($request); 
+    
+            if ($form->isSubmitted() && $form->isValid()){
+                $this->manager->persist($formations); 
+                $this->manager->flush();  
+    
+            }
+    
+            return $this->render('formations/ajoutformation.html.twig', [
+                'formFormation' => $form->createView(),  
+                
+            ]); 
+        }
     
     /**
      * @Route("/formations", name="app_formations")
@@ -27,27 +50,55 @@ class FormationsController extends AbstractController
         ]);
     }
 
-    // *************************AFFICHAGE AJOUT FORMATIONS
+    // *************************AFFICHAGE DE TOUTES LES FORMATIONS 
 
     /**
-     * @Route("/admin/formation/ajout", name="app_formations_ajout")
+     * @Route("/all/formations", name="app_formations_all") 
      */
-    public function formationAjout(Request $request): Response 
+    public function allformation(): Response 
     {
-        $formation = new Formations(); 
-        $form = $this->createForm(FormationType::class, $formation);   
-        $form->handleRequest($request); 
+        $formations = $this->manager->getRepository(Formations::class)->findAll();  
 
-        if ($form->isSubmitted() && $form->isValid()){
-            $this->manager->persist($formation); 
+        // dd($formations);
+
+        return $this->render('formations/allformations.html.twig', [ 
+            'formations' => $formations, 
+        ]);  
+    
+    } 
+
+    // *************************** AFFICHAGE MODIFICATION ET SUPPRESSION
+
+    /**
+     * @Route("/admin/formations/edit/{id}", name="app_admin_formations_edit")
+     */
+    public function formationsEdit(Formations $formations, Request $request): Response 
+    {
+            $formEdit = $this->createForm(FormationType::class, $formations);
+            $formEdit->handleRequest($request);
+
+            if ($formEdit->isSubmitted() && $formEdit->isValid()) {
+                $this->manager->persist($formations);  
+                $this->manager->flush(); 
+                return $this->redirectToRoute('admin_app_formations_all');
+            }
+
+            return $this->render('formations/editformations.html.twig', [
+                'formformations' => $formEdit->createview(), 
+            ]);    
+    }
+
+    /**
+     * @Route("/admin/formations/delete/{id}", name="app_admin_formations_delete")
+     */
+    public function formationsDelete(Formations $formations): Response 
+    {
+            $this->manager->remove($formations); 
             $this->manager->flush(); 
 
-        }
 
-
-        return $this->render('formations/ajoutformation.html.twig', [
-            'formFormation' => $form->createView(),  
-            
-        ]);
+        return $this->redirectToRoute('admin_app_formations_all');           
+        
     }
+
 }

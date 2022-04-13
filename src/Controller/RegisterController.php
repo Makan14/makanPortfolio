@@ -20,7 +20,7 @@ class RegisterController extends AbstractController
     } 
 
     /**
-     * @Route("/register", name="app_register")
+     * @Route("/admin/register", name="app_register")
      */
     public function index(Request $request): Response
     {
@@ -29,19 +29,19 @@ class RegisterController extends AbstractController
         $form->handleRequest($request); 
 
         if ($form->isSubmitted() && $form->isValid()){
+
             $empty = $form->get('password')->getData();
             if ($empty == null) {
                 $this->setPassword($user->getPassword()); 
             }else{
                 $encode = $this->passwordhasher->hashPassword($user,$empty);
-                $user->setPassword($encode);
+                $user->setPassword($encode); 
             }
 
             $this->manager->persist($user); 
             $this->manager->flush(); 
 
-            return $this->redirectToRoute('app_login');
-
+            return $this->redirectToRoute('app_login'); 
 
         } 
 

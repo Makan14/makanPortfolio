@@ -18,7 +18,7 @@ class CompetencesController extends AbstractController
     }
 
     /**
-     * @Route("/competences/ajout", name="app_competences_ajout")
+     * @Route("/admin/competences/ajout", name="app_competences_ajout")
      */
     public function competencesAjout(Request $request): Response 
     {
@@ -77,7 +77,7 @@ class CompetencesController extends AbstractController
         // dd($competences);
 
         return $this->render('competences/gestion.html.twig', [ 
-            'competences' => $allTable, 
+            'competences' => $allTable,  
         ]);   
     
     }
