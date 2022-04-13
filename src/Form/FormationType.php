@@ -16,7 +16,9 @@ class FormationType extends AbstractType
         $builder
             ->add('titres', TextType::class,['attr' => ['class' => 'form-control']])
             ->add('organismes', TextType::class,['attr' => ['class' => 'form-control']])
-            ->add('submit', SubmitType::class, [
+            ->add('logo', TextType::class,['attr' => ['class' => 'form-control']])
+            ->add('periode', TextType::class,['attr' => ['class' => 'form-control']])
+            ->add('envoyer', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-success mt-3'  
                 ]

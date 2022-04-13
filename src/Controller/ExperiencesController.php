@@ -18,6 +18,30 @@ class ExperiencesController extends AbstractController
         $this->manager = $manager; 
     }
 
+     // *************************AJOUT EXPERIENCES 
+
+    /**
+     * @Route("/experiences", name="app_experiences")
+     */
+    public function index(Request $request): Response
+    {
+        $experiences = new Experiences();
+        $form = $this->createForm(ExperiencesType::class, $experiences);   
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()){
+            $this->manager->persist($experiences); 
+            $this->manager->flush(); 
+
+            return $this->redirectToRoute('app_experiences_all');           
+        }
+
+
+        return $this->render('experiences/ajoutexperiences.html.twig', [
+            'experiences' => $form->createView(), 
+        ]);
+    }
+
      // *************************AFFICHAGE DE TOUTES LES EXPERIENCES  
 
     /**
@@ -25,11 +49,11 @@ class ExperiencesController extends AbstractController
      */
     public function allexperiences(): Response 
     {
-        $experiences = $this->manager->getRepository(ExperiencesType::class)->findAll();  
+        $experiences = $this->manager->getRepository(Experiences::class)->findAll();  
 
-        // dd($experiences);
+        // dd($experiences); 
 
-        return $this->render('experiences/allexperiences.html.twig', [ 
+        return $this->render('experiences/index.html.twig', [ 
             'experiences' => $experiences, 
         ]);  
     
@@ -77,23 +101,15 @@ class ExperiencesController extends AbstractController
     public function allexperiencesAdmin(): Response 
     {
         
-        $allTable = $this->manager->getRepository(ExperiencesType::class)->findAll();   
+        $allTable = $this->manager->getRepository(Experiences::class)->findAll();   
 
         // dd($experiences);
 
-        return $this->render('experiences/gestion.html.twig', [ 
+        return $this->render('experiences/gestionexperiences.html.twig', [ 
             'experiences' => $allTable,  
         ]);   
     
     } 
 
-    /**
-     * @Route("/experiences", name="app_experiences")
-     */
-    public function index(): Response
-    {
-        return $this->render('experiences/index.html.twig', [
-            'controller_name' => 'ExperiencesController',
-        ]);
-    }
+   
 }

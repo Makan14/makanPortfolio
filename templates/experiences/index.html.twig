@@ -16,8 +16,9 @@
         <div class="col-md-4 mt-5 d-flex mt-5"> 
             <div class="card" style="width: 18rem;"> 
               <div class="card-body">
+                <img src="{{experiences.logo}}" style="width:90px; height:90px">
                 <p class="card-text">{{experiences.poste}}</p> 
-                <p class="card-text">{{experiences.date}}</p> 
+                <p class="card-text">{{experiences.date | date('d-m-y')}}</p> 
                 <p class="card-text">{{experiences.lieu}}</p> 
                 <p class="card-text">{{experiences.entreprise}}</p> 
                 <p class="card-text">{{experiences.description}}</p> 

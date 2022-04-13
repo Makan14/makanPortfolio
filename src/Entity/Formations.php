@@ -27,6 +27,16 @@ class Formations
      */
     private $organismes;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Logo;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Periode;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +62,30 @@ class Formations
     public function setOrganismes(string $organismes): self
     {
         $this->organismes = $organismes;
+
+        return $this;
+    }
+
+    public function getLogo(): ?string
+    {
+        return $this->Logo;
+    }
+
+    public function setLogo(string $Logo): self
+    {
+        $this->Logo = $Logo;
+
+        return $this;
+    }
+
+    public function getPeriode(): ?string
+    {
+        return $this->Periode;
+    }
+
+    public function setPeriode(string $Periode): self
+    {
+        $this->Periode = $Periode;
 
         return $this;
     }

@@ -39,6 +39,7 @@ class MesProjetsController extends AbstractController
         ]); 
     }
 
+    // ************************AFFICHAGE DE TOUS MES PROJETS
     /**
      * @Route("/mes/projets", name="app_mes_projets")
      */
@@ -66,7 +67,7 @@ class MesProjetsController extends AbstractController
             if ($formEdit->isSubmitted() && $formEdit->isValid()) {
                 $this->manager->persist($projets);  
                 $this->manager->flush(); 
-                return $this->redirectToRoute('admin_app_projets_all');
+                return $this->redirectToRoute('app_mes_projets'); 
             }
 
             return $this->render('mes_projets/editprojets.html.twig', [

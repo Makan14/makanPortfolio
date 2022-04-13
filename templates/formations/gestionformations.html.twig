@@ -11,20 +11,20 @@
             <thead>
               <tr>
                 <th scope="col">id</th>
-                <th scope="col">Language</th>
+                <th scope="col">Titres</th>
                 <th scope="col">Logo</th>
+                <th scope="col">Organismes</th>
                 <th scope="col">Modifier</th> 
                 <th scope="col">supprimer</th> 
               </tr>
             </thead>
             <tbody>
-        {% for formations in formations %}
-
+        {% for formations in formations %} 
               <tr>
                 <th scope="row">{{formations.id}}</th>
-                <td>{{formations.titre}}</td>
-                <td>{{formations.organisme}}</td> 
                 <td><img src="{{formations.logo}}" style="width:90px; height:90px;" alt=""></td>
+                <td>{{formations.titres}}</td>
+                <td>{{formations.organismes}}</td> 
                  
                 {%  if is_granted('ROLE_ADMIN') %} 
                 <td><a class="btn btn-success" href="{{path('app_admin_formations_edit',{id: formations.id})}}">Modifier</a></td>

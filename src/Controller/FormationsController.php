@@ -67,6 +67,8 @@ class FormationsController extends AbstractController
     
     } 
 
+    // **********************************************COTER ADMIN
+
     // *************************** AFFICHAGE MODIFICATION ET SUPPRESSION
 
     /**
@@ -80,7 +82,7 @@ class FormationsController extends AbstractController
             if ($formEdit->isSubmitted() && $formEdit->isValid()) {
                 $this->manager->persist($formations);  
                 $this->manager->flush(); 
-                return $this->redirectToRoute('admin_app_formations_all');
+                return $this->redirectToRoute('app_formations_all');
             }
 
             return $this->render('formations/editformations.html.twig', [
@@ -100,5 +102,21 @@ class FormationsController extends AbstractController
         return $this->redirectToRoute('admin_app_formations_all');           
         
     }
+
+    /**
+     * @Route("/admin/all/formations", name="admin_app_formation_all") 
+     */
+    public function allformationsAdmin(): Response 
+    {
+        
+        $allTable = $this->manager->getRepository(Formations::class)->findAll();   
+
+        // dd($formations);
+
+        return $this->render('formations/gestionformations.html.twig', [ 
+            'formations' => $allTable,  
+        ]);   
+    
+    } 
 
 }

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EXPERIENCES{% endblock %}
+
+{% block body %}
+
+
+<div class="titre">
+    <h1>Mes experiences</h1>  
+
+</div> 
+
+<div class="container"> 
+    <div class="row">
+
+        <table class="table"> 
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Logo</th>
+                <th scope="col">Poste</th>
+                <th scope="col">Date</th>
+                <th scope="col">Lieu</th> 
+                <th scope="col">Entreprise</th> 
+                <th scope="col">Description</th> 
+                <th scope="col">Modifier</th> 
+                <th scope="col">supprimer</th> 
+              </tr>
+            </thead>
+            <tbody>
+        {% for experiences in experiences %}
+
+              <tr>
+                <th scope="row">{{experiences.id}}</th>
+                <td><img src="{{experiences.logo}}" style="width:90px; height:90px;" alt=""></td>
+                <td>{{experiences.poste}}</td>
+                <td>{{experiences.date | date('d-m-y')}}</td>
+                <td>{{experiences.lieu}}</td> 
+                <td>{{experiences.entreprise}}</td>
+                <td>{{experiences.description}}</td>
+                 
+                {%  if is_granted('ROLE_ADMIN') %} 
+                <td><a class="btn btn-success" href="{{path('app_admin_experiences_edit',{id: experiences.id})}}">Modifier</a></td>
+                <td><a class="btn btn-danger" href="{{path('app_admin_experiences_delete',{id: experiences.id})}}">Supprimer</a></td> 
+                {% endif %} 
+                
+              </tr>
+        {% endfor %} 
+        
+            </tbody>
+        </table>
+</div>
+
+{% endblock %}

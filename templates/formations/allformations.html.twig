@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CompetencesController!{% endblock %}
+{% block title %}FORMATIONS{% endblock %}
 
 {% block body %}
 
@@ -17,8 +17,10 @@
             <div class="card" style="width: 18rem;">
               {# <img src="{{formations.images}}" class="card-img-top" alt="...">  #}
               <div class="card-body">
+                <img src="{{formations.logo}}" style="width:90px; height:90px">
                 <p class="card-text">{{formations.titres}}</p> 
                 <p class="card-text">{{formations.organismes}}</p> 
+                <p class="card-text">{{formations.periode}}</p> 
               </div>
             </div>
         </div>
