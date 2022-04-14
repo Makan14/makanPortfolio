@@ -21,6 +21,10 @@
                 <p class="card-text">{{formations.titres}}</p> 
                 <p class="card-text">{{formations.organismes}}</p> 
                 <p class="card-text">{{formations.periode}}</p> 
+                {%  if is_granted('ROLE_ADMIN') %} 
+                <td><a class="btn btn-success" href="{{path('app_admin_formations_edit',{id: formations.id})}}">Modifier</a></td>
+                <td><a class="btn btn-danger" href="{{path('app_admin_formations_delete',{id: formations.id})}}">Supprimer</a></td> 
+                {% endif %} 
               </div>
             </div>
         </div>

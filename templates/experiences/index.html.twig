@@ -22,6 +22,10 @@
                 <p class="card-text">{{experiences.lieu}}</p> 
                 <p class="card-text">{{experiences.entreprise}}</p> 
                 <p class="card-text">{{experiences.description}}</p> 
+                {%  if is_granted('ROLE_ADMIN') %} 
+                <td><a class="btn btn-success" href="{{path('app_admin_experiences_edit',{id: experiences.id})}}">Modifier</a></td>
+                <td><a class="btn btn-danger" href="{{path('app_admin_experiences_delete',{id: experiences.id})}}">Supprimer</a></td> 
+                {% endif %}
               </div>
             </div>
         </div>

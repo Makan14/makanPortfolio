@@ -17,7 +17,7 @@ class RegisterType extends AbstractType
         $builder
             ->add('email', EmailType::class)
             ->add('password', PasswordType::class) 
-            ->add('submit', SubmitType::class, [
+            ->add('je m\'inscris', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-success mt-3'  
                 ]

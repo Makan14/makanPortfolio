@@ -19,6 +19,7 @@ class RegisterController extends AbstractController
         $this->passwordhasher = $passwordhasher;
     } 
 
+    // *******************************COTER ADMIN AFFICHAGE INSCRIPTION 
     /**
      * @Route("/admin/register", name="app_register")
      */

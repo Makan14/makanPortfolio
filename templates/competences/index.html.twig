@@ -13,11 +13,15 @@
 <div class="container"> 
     <div class="row">
         {% for competences in competences %}
-        <div class="col-md-4 mt-5 d-flex mt-5"> 
+        <div class="col-md-3 mt-5 d-flex"> 
             <div class="card" style="width: 18rem;">
               <img src="{{competences.logo}}" class="card-img-top" alt="..."> 
               <div class="card-body">
-                <p class="card-text">{{competences.languages}}</p> 
+                <p class="card-text">{{competences.languages}}</p>
+                {%  if is_granted('ROLE_ADMIN') %} 
+                <td><a class="btn btn-success" href="{{path('app_admin_competences_edit',{id: competences.id})}}">Modifier</a></td>
+                <td><a class="btn btn-danger" href="{{path('app_admin_competences_delete',{id: competences.id})}}">Supprimer</a></td> 
+                {% endif %} 
               </div>
             </div>
         </div>

@@ -7,5 +7,15 @@
     <h1 class="text-center">Contactez-moi</h1> 
 
     {{form(formulaire)}} 
+
+    {% for message in app.flashes ('success') %}
+
+            <div class='alert alert-success mt-3'>
+
+                {{message}}
+
+            </div>
+
+    {% endfor %}
 </div>
 {% endblock %}
