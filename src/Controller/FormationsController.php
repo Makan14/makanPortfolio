@@ -38,7 +38,7 @@ class FormationsController extends AbstractController
                 'formFormation' => $form->createView(),  
                 
             ]); 
-        }
+        } 
     
     /**
      * @Route("/formations", name="app_formations")
@@ -67,7 +67,7 @@ class FormationsController extends AbstractController
     
     } 
 
-    // **********************************************COTER ADMIN
+    // **********************************************COTER ADMIN 
 
     // *************************** AFFICHAGE MODIFICATION ET SUPPRESSION
 

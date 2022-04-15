@@ -15,22 +15,21 @@
         {% for projets in projets %} 
         <div class="col-md-4 mt-5 d-flex mt-5"> 
             <div class="card" style="width: 18rem;">
-              <img src="{{projets.images}}" class="card-img-top" alt="..."> 
-              <div class="card-body">
+                <a href="#"> 
+                    <img src="{{projets.images}}" class="card-img-top" alt="..."> 
+
+                </a>
+              <div class="card-body"> 
                 <p class="card-text">{{projets.nom}}</p> 
                 <p class="card-text">{{projets.lien}}</p> 
-            {%  if is_granted('ROLE_ADMIN') %}  
+            {% if is_granted('ROLE_ADMIN') %}  
                 <td><a class="btn btn-success" href="{{path('app_admin_projets_edit',{id: projets.id})}}">Modifier</a></td>
                 <td><a class="btn btn-danger" href="{{path('app_admin_projets_delete',{id: projets.id})}}">Supprimer</a></td> 
             {% endif %}
-              </div>
+              </div> 
             </div>
         </div>
         {% endfor %}
-
-        
-        
-
         
     </div>
 </div>
