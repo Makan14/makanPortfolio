@@ -17,7 +17,7 @@ class ProjetsType extends AbstractType
             ->add('nom',TextType::class,['attr' => ['class' => 'form-control']])
             ->add('lien',TextType::class,['attr' => ['class' => 'form-control']])
             ->add('images',TextType::class,['attr' => ['class' => 'form-control']])
-            ->add('submit', SubmitType::class, [
+            ->add('ajouter', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-success mt-3'  
                 ]

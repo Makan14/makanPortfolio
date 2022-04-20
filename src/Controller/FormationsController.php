@@ -31,6 +31,7 @@ class FormationsController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()){
                 $this->manager->persist($formations); 
                 $this->manager->flush();  
+                return $this->redirectToRoute('app_formations_all');
     
             }
     
@@ -39,6 +40,22 @@ class FormationsController extends AbstractController
                 
             ]); 
         } 
+
+    /**
+     * @Route("/admin/all/formations", name="admin_app_formation_all") 
+     */
+    public function allformationsAdmin(): Response 
+    {
+        
+        $allTable = $this->manager->getRepository(Formations::class)->findAll();   
+
+        // dd($formations);
+
+        return $this->render('formations/gestionformations.html.twig', [ 
+            'formations' => $allTable,  
+        ]);   
+    
+    } 
     
     /**
      * @Route("/formations", name="app_formations")
@@ -69,7 +86,19 @@ class FormationsController extends AbstractController
 
     // **********************************************COTER ADMIN 
 
-    // *************************** AFFICHAGE MODIFICATION ET SUPPRESSION
+    // *************************** AFFICHAGE MODIFICATION ET SUPPRESSION 
+
+    /**
+     * @Route("/admin/formations/delete/{id}", name="app_admin_formations_delete") 
+     */
+    public function formationsDelete(Formations $formations): Response 
+    {
+        $this->manager->remove($formations); 
+        $this->manager->flush(); 
+
+        return $this->redirectToRoute('app_formations_all');            
+        
+    }
 
     /**
      * @Route("/admin/formations/edit/{id}", name="app_admin_formations_edit")
@@ -77,7 +106,7 @@ class FormationsController extends AbstractController
     public function formationsEdit(Formations $formations, Request $request): Response 
     {
             $formEdit = $this->createForm(FormationType::class, $formations);
-            $formEdit->handleRequest($request);
+            $formEdit->handleRequest($request); 
 
             if ($formEdit->isSubmitted() && $formEdit->isValid()) {
                 $this->manager->persist($formations);  
@@ -90,33 +119,8 @@ class FormationsController extends AbstractController
             ]);    
     }
 
-    /**
-     * @Route("/admin/formations/delete/{id}", name="app_admin_formations_delete")
-     */
-    public function formationsDelete(Formations $formations): Response 
-    {
-            $this->manager->remove($formations); 
-            $this->manager->flush(); 
 
 
-        return $this->redirectToRoute('admin_app_formations_all');           
-        
-    }
-
-    /**
-     * @Route("/admin/all/formations", name="admin_app_formation_all") 
-     */
-    public function allformationsAdmin(): Response 
-    {
-        
-        $allTable = $this->manager->getRepository(Formations::class)->findAll();   
-
-        // dd($formations);
-
-        return $this->render('formations/gestionformations.html.twig', [ 
-            'formations' => $allTable,  
-        ]);   
     
-    } 
 
 }

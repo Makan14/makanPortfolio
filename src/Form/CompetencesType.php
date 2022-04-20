@@ -17,7 +17,7 @@ class CompetencesType extends AbstractType
         $builder
             ->add('languages', TextType::class,['attr' => ['class' => 'form-control']])
             ->add('logo', TextType::class, ['attr' => ['class' => 'form-control']]) 
-            ->add('submit', SubmitType::class, [
+            ->add('ajouter', SubmitType::class, [
                 'attr' => [
                     'class' => 'btn btn-success mt-3'  
                 ]

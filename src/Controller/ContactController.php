@@ -18,6 +18,8 @@ class ContactController extends AbstractController
         $this->manager = $manager;
         $this->flash = $flash; 
     }
+
+
     // ************************************AFFICHAGE FORMULAIRE DE CONTACT
     /**
      * @Route("/contact", name="app_contact")
@@ -31,12 +33,12 @@ class ContactController extends AbstractController
             if ($form->isSubmitted() && $form->isValid()) {
                 $this->manager->persist($contact);  
                 $this->manager->flush(); 
-                $this->flash->add('success', 'votre message a bien etais envoyé, merci'); 
+                $this->flash->add('success', 'votre message a bien été envoyé, merci'); 
                 return $this->redirectToRoute('app_contact'); 
             }
         
         return $this->render('contact/index.html.twig', [
             'formulaire' => $form->createView(),
-        ]);
+        ]); 
     }
 }

@@ -19,5 +19,17 @@ body{
 }
 
 .photo img{
-    height: 700px; 
+    height: 800px; 
+}
+
+/* *****************FOOTER************** */
+.bas{
+    background: #000;
+    height: 200px; 
+    
+}
+
+.copyright{
+    text-align: center;
+    color: white;
 }

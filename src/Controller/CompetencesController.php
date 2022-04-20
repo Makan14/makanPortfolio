@@ -17,6 +17,8 @@ class CompetencesController extends AbstractController
         $this->manager = $manager; 
     }
 
+    // *************************AJOUT COMPETENCES 
+
     /**
      * @Route("/admin/competences/ajout", name="app_competences_ajout")
      */
@@ -81,6 +83,10 @@ class CompetencesController extends AbstractController
         ]);   
     
     }
+
+    
+
+    // ***********************MODIFICATION ET SUPPRESSION 
 
     /**
      * @Route("/admin/competences/delete/{id}", name="app_admin_competences_delete")
