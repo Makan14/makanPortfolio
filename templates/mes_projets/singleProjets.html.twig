@@ -6,30 +6,26 @@
 
 
 <div class="titre">
-    <h1>Mes projets</h1>  
+    <h1> projet</h1>  
 
 </div> 
 
 <div class="container"> 
-    <div class="row">
-        {% for projets in projets %} 
+    
+    <div class="row"> 
         <div class="col-md-4 mt-5 d-flex"> 
             <div class="card" style="width: 18rem;">
                 <img src="{{asset('uploads/images/' ~ projets.images)}}" class="card-img-top" alt="...">                              
               <div class="card-body"> 
                 <p class="card-text">{{projets.nom}}</p> 
                 <p class="card-text">{{projets.lien}}</p> 
-            {% if is_granted('ROLE_ADMIN') %}  
-                <td><a class="btn btn-success" href="{{path('app_admin_projets_edit',{id: projets.id})}}">Modifier</a></td>
-                <td><a class="btn btn-danger" href="{{path('app_admin_projets_delete',{id: projets.id})}}">Supprimer</a></td> 
-                <td><a class="btn btn-warning" href="{{path('app_view_projets',{id: projets.id})}}">Voir plus</a></td> 
-            {% endif %}
+            
               </div> 
             </div>
         </div>
-        {% endfor %}
         
     </div>
+    
 </div>
 
 {% endblock %}
