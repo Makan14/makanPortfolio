@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ExperiencesController extends AbstractController
@@ -30,6 +31,7 @@ class ExperiencesController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()){
+
             $this->manager->persist($experiences); 
             $this->manager->flush(); 
 
@@ -72,6 +74,7 @@ class ExperiencesController extends AbstractController
             $formEdit->handleRequest($request);
 
             if ($formEdit->isSubmitted() && $formEdit->isValid()) {
+
                 $this->manager->persist($experiences);  
                 $this->manager->flush(); 
                 return $this->redirectToRoute('admin_app_experiences_all'); 

@@ -44,7 +44,7 @@ class MesProjetsController extends AbstractController
              }catch (FileException $e){
 
              }
-              $projets->setImages($newFilename);
+              $projets->setImages($newFilename); 
             }else{
                 dd("Aucun logo"); 
             } 

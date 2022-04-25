@@ -30,7 +30,10 @@ class CompetencesController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()){
             $this->manager->persist($competences); 
-            $this->manager->flush(); 
+            $this->manager->flush();
+            
+        return $this->redirectToRoute('app_competences_all');      
+            
 
         }
 
@@ -78,7 +81,7 @@ class CompetencesController extends AbstractController
 
         // dd($competences);
 
-        return $this->render('competences/gestion.html.twig', [ 
+        return $this->render('competences/index.html.twig', [ 
             'competences' => $allTable,  
         ]);   
     

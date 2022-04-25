@@ -17,7 +17,10 @@
             <div class="card" style="width: 18rem;">
               <img src="{{competences.logo}}" class="card-img-top" alt="..."> 
               <div class="card-body">
-                <p class="card-text">{{competences.languages}}</p>
+                <p class="card-text">{{competences.languages}}</p> 
+                <div class="progress">
+                    <div class="progress-bar progressBar barProgress" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                </div>
                 {%  if is_granted('ROLE_ADMIN') %} 
                 <td><a class="btn btn-success" href="{{path('app_admin_competences_edit',{id: competences.id})}}">Modifier</a></td>
                 <td><a class="btn btn-danger" href="{{path('app_admin_competences_delete',{id: competences.id})}}">Supprimer</a></td> 

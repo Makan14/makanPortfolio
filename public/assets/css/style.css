@@ -11,25 +11,59 @@ body{
     
 }
 
-.d-flex{
-    display: flex;
-    margin: 50px 200px; 
-    align-items: center; 
-    
+.txt{
+    margin: 50px 100px;
+    margin-right: 550px;
+}
+
+.photo{
+    margin-right: 900px;
+
 }
 
 .photo img{
-    height: 800px; 
+    height: 600px;
+    
+    
+}
+
+/* ************************BOUTON VOIR MON CV***************** */
+.bouton{
+    margin-top: 50px;
+
+}
+
+.bouton a{
+    background: #000;
+    color: white;
+    border-radius: 10px 10px 10px 10px;
+    padding: 25px 25px;
+    text-decoration: none;
+
+}
+
+.bouton a:hover{
+    background: rgb(255, 208, 0);
+    color: black;
 }
 
 /* *****************FOOTER************** */
 .bas{
     background: #000;
     height: 200px; 
-    
 }
 
 .copyright{
     text-align: center;
     color: white;
+ 
+}
+
+/* *********************BARRE DE PROGRESSION**************** */
+.progress-bar{
+    width: 50%;
+}
+
+.progressBar{
+    width: 40%;
 }
