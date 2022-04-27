@@ -52,7 +52,7 @@ class MesProjetsController extends AbstractController
 
             $this->manager->persist($projets); 
             $this->manager->flush(); 
-            return $this->redirectToRoute('app_home'); 
+            return $this->redirectToRoute('app_mes_projets'); 
         }
 
 

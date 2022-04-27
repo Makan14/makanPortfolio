@@ -12,17 +12,11 @@ body{
 }
 
 .txt{
-    margin: 50px 100px;
-    margin-right: 550px;
-}
-
-.photo{
-    margin-right: 900px;
-
+    margin-top: 150px;
 }
 
 .photo img{
-    height: 600px;
+    height: 600px; 
     
     
 }
@@ -51,6 +45,8 @@ body{
 .bas{
     background: #000;
     height: 200px; 
+    display: flex;
+    align-items: center;justify-content: center;
 }
 
 .copyright{
@@ -59,6 +55,11 @@ body{
  
 }
 
+.liste-media{
+    display: flex;
+    list-style-type: none;
+    
+}
 /* *********************BARRE DE PROGRESSION**************** */
 .progress-bar{
     width: 50%;
