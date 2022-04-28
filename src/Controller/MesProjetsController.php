@@ -17,7 +17,9 @@ class MesProjetsController extends AbstractController
     public function __construct(EntityManagerInterface $manager){
 
         $this->manager = $manager; 
-    }
+    } 
+
+    // ********************AJOUT PROJETS
 
     /**
      * @Route("/admin/formprojets", name="app_form_projets")
@@ -32,7 +34,7 @@ class MesProjetsController extends AbstractController
             
             $photoProjets = $form->get('images')->getData();
        
-            if($photoProjets){
+            if($photoProjets){      
            $originalFilename = pathinfo($photoProjets->getClientOriginalName(), PATHINFO_FILENAME);
            $safeFilename = $slugger->slug($originalFilename);
            $newFilename = $safeFilename.'-'.uniqid().'.'.$photoProjets->guessExtension();
@@ -48,7 +50,6 @@ class MesProjetsController extends AbstractController
             }else{
                 dd("Aucun logo"); 
             } 
-
 
             $this->manager->persist($projets); 
             $this->manager->flush(); 
@@ -66,7 +67,7 @@ class MesProjetsController extends AbstractController
     /**
      * @Route("/mes/projets", name="app_mes_projets")
      */
-    public function mesProjets(Request $request): Response
+    public function mesProjets(): Response
     {
         $projets = $this->manager->getRepository(MesProjets::class)->findAll();  
         

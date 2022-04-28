@@ -58,7 +58,7 @@ body{
 .liste-media{
     display: flex;
     list-style-type: none;
-    
+   
 }
 /* *********************BARRE DE PROGRESSION**************** */
 .progress-bar{
