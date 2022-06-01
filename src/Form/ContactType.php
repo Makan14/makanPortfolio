@@ -20,6 +20,7 @@ class ContactType extends AbstractType
             ->add('nom', TextType::class, ['attr' => ['class' => 'form-control']]) 
             ->add('prenom', TextType::class, ['attr' => ['class' => 'form-control']])
             ->add('mail', EmailType::class, ['attr' => ['class' => 'form-control']])
+            ->add('telephone', TextType::class, ['attr' => ['class' => 'form-control']])
             ->add('message', TextareaType::class, ['attr' => ['class' => 'form-control']])
             // ->add('telephone', NumberType::class, ['attr' => ['class' => 'form-control']]) 
             ->add('envoyer', SubmitType::class, [

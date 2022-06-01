@@ -41,4 +41,21 @@ class ContactController extends AbstractController
             'formulaire' => $form->createView(),
         ]); 
     }
+
+    // ***********************************GESTION DE CONTACT
+     /**
+     * @Route("/admin/all/contact", name="admin_app_contact_all") 
+     */
+    public function allcontactAdmin(): Response 
+    {
+        
+        $allTable = $this->manager->getRepository(Contact::class)->findAll();   
+
+        // dd($contact);
+
+        return $this->render('contact/gestioncontact.html.twig', [ 
+            'contact' => $allTable,  
+        ]);   
+    
+    } 
 }
