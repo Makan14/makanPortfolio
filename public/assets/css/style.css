@@ -4,6 +4,12 @@ body{
 
 
 /* ****************A PROPOS********************* */
+.contain{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .titre{
     background: rgb(255, 208, 0);
     padding: 30px;
@@ -13,12 +19,17 @@ body{
 
 .txt{
     margin-top: 150px;
+    width: 40%;
 }
 
 .photo img{
-    height: 600px; 
-    
-    
+    height: 600px;   
+}
+
+.d-flex{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 /* ************************BOUTON VOIR MON CV***************** */
@@ -42,11 +53,18 @@ body{
 }
 
 /* *****************FOOTER************** */
+footer{
+    position: relative;
+    top: 200px;
+}
+
 .bas{
     background: #000;
     height: 200px; 
     display: flex;
-    align-items: center;justify-content: center;
+    align-items: center;
+    justify-content: center;
+
 }
 
 .copyright{
@@ -58,13 +76,11 @@ body{
 .liste-media{
     display: flex;
     list-style-type: none;
-   
-}
-/* *********************BARRE DE PROGRESSION**************** */
-.progress-bar{
-    width: 50%;
+    
 }
 
-.progressBar{
-    width: 40%;
+.liste-media a{
+    color: white;
+    font-size: 50px;
+    margin: 0 20px;
 }
