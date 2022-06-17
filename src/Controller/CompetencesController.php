@@ -54,7 +54,7 @@ class CompetencesController extends AbstractController
         ]); 
     }
 
-
+    // *************************AFFICHAGE DE TOUTES LES COMPETENCES
      /**
      * @Route("/all/competences", name="app_competences_all") 
      */
@@ -71,6 +71,7 @@ class CompetencesController extends AbstractController
     
     }
 
+        // *******************************GESTION COMPETENCES 
      /**
      * @Route("/admin/all/competences", name="admin_app_competences_all") 
      */
@@ -81,13 +82,11 @@ class CompetencesController extends AbstractController
 
         // dd($competences);
 
-        return $this->render('competences/index.html.twig', [ 
+        return $this->render('competences/gestionCompetences.html.twig', [ 
             'competences' => $allTable,  
         ]);   
     
-    }
-
-    
+    } 
 
     // ***********************MODIFICATION ET SUPPRESSION 
 

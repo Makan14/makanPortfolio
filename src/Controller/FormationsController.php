@@ -44,6 +44,7 @@ class FormationsController extends AbstractController
             ]); 
         } 
 
+        // ***********************************GESTION FORMATIONS
     /**
      * @Route("/admin/all/formations", name="admin_app_formation_all") 
      */
